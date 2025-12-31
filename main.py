@@ -38,7 +38,9 @@ def assess_password_strength(rating):
 
 
 def suggest_improvements(password_obj):
-    answer = input("Would you like feedback on your password? (Y/N)")
+    answer = input("Would you like feedback on your password? (Y/N) : " )
+    print()
+
     if answer.lower() == "y":
         if not password_obj["length"]:
             print("Make your password length greater than 9.")
@@ -61,5 +63,11 @@ password = getpass.getpass("Enter your password : ")
 password_obj = analyze_password(password)
 rating = calculate_rating(password_obj)
 assess_password_strength(rating)
-suggest_improvements(password_obj)
+
+
+if rating<7:
+    suggest_improvements(password_obj)
+else:
+    print("Good job.")
+
 
